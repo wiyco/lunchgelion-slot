@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141410">
+  <meta name="description" content="シン・ランチゲリオン — THRICE UPON A LUNCH。昼飯を決めるだけなのに、人類の命運を託される。無駄に壮大な昼食補完スロット。">
+  <title>シン・ランチゲリオン｜THRICE UPON A LUNCH</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="masthead">
+      <a href="./" class="agency" aria-label="人類昼食補完計画 ホーム"><span class="agency-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>人類昼食補完計画<small>HUMAN LUNCH INSTRUMENTALITY PROJECT</small></span></a>
+      <div class="header-actions"><button id="about-button" class="text-button">作戦概要 <span>↗</span></button><button id="sound-button" class="sound-button" aria-pressed="false"><span aria-hidden="true">♪</span> 音響 <b>OFF</b></button></div>
+    </header>
+
+    <main>
+      <div class="intro"><div class="intro-copy"><p class="eyebrow"><span class="live-dot"></span> 極秘作戦 第013号 <span class="eyebrow-divider">/</span> LUNCH BREAK EMERGENCY</p><h1><span class="cr-label">CR</span> シン・<em>ランチゲリオン</em></h1><p class="intro-subtitle">THRICE UPON A LUNCH</p></div><div class="intro-stamp"><span>機密指定</span><strong>昼休み厳守</strong><small>RETURN BY 13:00</small></div></div>
+
+      <div class="game-layout">
+        <section class="machine" aria-label="昼飯抽選機">
+          <div class="machine-top"><span><i class="live-dot"></i> 第一種空腹警戒態勢</span><span id="phase-code">STANDBY / 待機中</span></div>
+          <div id="stage" class="stage" data-phase="idle">
+            <div id="scene-image" class="scene-image"></div><div class="stage-shade"></div><div class="scanlines"></div><div class="crosshair crosshair-left"></div><div class="crosshair crosshair-right"></div>
+            <div class="scene-topline"><span id="scene-tag">CENTRAL DOGMA / 昼食司令室</span><span id="sync-rate">空腹率 <b>400%</b></span></div>
+            <div id="idle-caption" class="idle-caption"><span class="scene-kicker">THRICE UPON A LUNCH</span><h2>空腹、<br><span>襲来。</span></h2><p>逃げちゃだめだ。<br>昼飯から、逃げちゃだめだ。</p></div>
+            <div id="cinematic-caption" class="cinematic-caption" hidden><p id="cinematic-kicker"></p><h2 id="cinematic-title"></h2><p id="cinematic-subtitle"></p></div>
+            <div id="preview-card" class="preview-card" hidden><span>NEXT LUNCH</span><h2>次回予告</h2><p id="preview-title">せめて、昼飯らしく</p><small>このあと、あなたは何かを食べる。</small></div>
+            <div id="heat-card" class="heat-card" hidden><span>激</span><span>ア</span><span>ツ</span><small>※ 昼飯が決まるだけです</small></div>
+            <div id="push-panel" class="push-panel" hidden><span>運命を、押し込め。</span><button id="push-button" aria-label="PUSH 昼飯を確定"><b>PUSH</b><small>押せ</small></button><p id="push-countdown">あと 6 秒で司令部が勝手に押します</p></div>
+            <div id="result-panel" class="result-panel" hidden><span class="result-kicker">MISSION COMPLETE / 昼食確定</span><p>人類が選んだ、あなたの昼飯。</p><h2 id="result-name"></h2><p id="result-remark"></p><span class="result-cost">なお、お会計はあなたです。</span></div>
+            <div id="stage-footer" class="stage-footer"><span>作戦規模：全人類</span><span>目的：昼飯を1つ決める</span></div>
+            <canvas id="particles" aria-hidden="true"></canvas>
+          </div>
+          <div class="reel-deck"><div class="reel-label"><span id="reel-status">DESTINY REELS</span><span id="reel-hint">3つ揃えば、ただの昼飯。</span></div><div class="reels" id="reels"><div class="reel"><span class="reel-number">01</span><span class="reel-emoji">🍚</span><b class="reel-name">牛丼</b><span class="reel-notch"></span></div><div class="reel"><span class="reel-number">02</span><span class="reel-emoji">🍜</span><b class="reel-name">ラーメン</b><span class="reel-notch"></span></div><div class="reel"><span class="reel-number">03</span><span class="reel-emoji">🍛</span><b class="reel-name">カレー</b><span class="reel-notch"></span></div></div></div>
+          <div class="machine-controls"><div class="start-group"><button id="start-button" class="start-button"><span id="start-label">作戦開始</span><span aria-hidden="true">↗</span></button><p id="start-footnote">家族に別れを告げる。13時には戻る。</p></div><div class="minor-controls"><button id="speed-button" class="speed-button" aria-pressed="false">演出 <b>壮大</b><span>⇄</span></button><button id="skip-button" class="skip-button" disabled>演出を飛ばす →</button></div></div>
+          <div class="warning-stripe" aria-hidden="true"></div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="menu-section"><div class="section-heading"><div><span class="section-index">01</span><h2>出撃候補</h2></div><button id="edit-button" class="text-button">編集 ↗</button></div><p class="section-note">気分じゃない候補は、タップで除外。</p><div id="menu-grid" class="menu-grid"></div><div class="candidate-summary"><span><b id="candidate-count">8</b> 候補が作戦参加中</span><span>食費は自己負担</span></div></section>
+          <section class="log-section"><div class="section-heading"><div><span class="section-index">02</span><h2>司令部通信</h2></div><span class="tiny-live"><i class="live-dot"></i> LIVE</span></div><ol id="log-list" class="log-list"><li><time>司令</time><span>総員、昼飯に備えよ。</span></li><li><time>経理</time><span>本作戦に予算はありません。</span></li><li><time>広報</time><span>なお、決まるのは昼飯です。</span></li></ol><div class="log-footer"><span>通信良好</span><span class="signal-bars" aria-hidden="true">▂▄▆█</span></div></section>
+          <section class="last-lunch"><span class="section-index">03</span><div><h2>前回の人類の選択</h2><p id="last-result">まだ世界は救われていません。</p></div><span aria-hidden="true">↺</span></section>
+          <div class="sidebar-quote"><span>“</span><p>昼飯を決めるのに、<br>ここまでやる必要は<br><b>ありませんでした。</b></p><small>— 司令部、全会一致</small></div>
+        </aside>
+      </div>
+      <footer class="page-footer"><span>人類昼食補完計画 © 2026</span><p>世界は救わなくていい。ちゃんと昼飯を食べよう。</p><span>所要時間 約30秒 / 成果 昼飯</span></footer>
+    </main>
+  </div>
+
+  <dialog id="menu-dialog"><form id="menu-form"><div class="dialog-heading"><span class="eyebrow">MISSION CONFIGURATION</span><button type="button" class="dialog-close" aria-label="閉じる">×</button></div><h2>出撃候補の再編成</h2><p>1行に1つ。好きな料理でも、近所のお店でも。</p><label for="menu-input">昼飯候補 <span>最大16個・各20文字まで</span></label><textarea id="menu-input" rows="9" maxlength="1000"></textarea><p id="menu-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" id="reset-menu-button" class="text-button">標準の候補に戻す</button><button type="submit" class="save-button">作戦に反映 →</button></div></form></dialog>
+  <dialog id="about-dialog"><div class="dialog-heading"><span class="eyebrow">CLASSIFIED / 機密資料</span><button type="button" class="dialog-close" aria-label="閉じる">×</button></div><h2>やることは、<br>昼飯を決めるだけ。</h2><p>候補を選び、「作戦開始」を押す。警報、出撃、次回予告、絶望、復活。人類の総力を結集して、あなたの昼飯を1つ決めます。</p><p>すべての参加候補は同じ確率です。金文字も激アツも、食費を肩代わりしてくれません。</p><p>音響をONにすると効果音が鳴ります。急ぐ日は「爆速」か「演出を飛ばす」で、司令部の長話を省略できます。</p><p class="about-last">これは架空の昼食司令部による、オリジナルのパロディです。賭け金も賞金もありません。あるのは空腹だけです。</p><button type="button" class="save-button dialog-close">作戦に戻る →</button></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

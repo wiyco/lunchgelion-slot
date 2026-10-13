@@ -1,0 +1,14 @@
+{
+  "name": "lunchgelion-slot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "シン・ランチゲリオン — THRICE UPON A LUNCH｜昼食補完スロット",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/lottery.test.mjs",
+    "check": "node --check dist/app.mjs && node --check dist/lottery.mjs && node --check scripts/serve.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
